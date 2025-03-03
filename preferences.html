@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Preferences Page{% endblock %}
+
+{% block content %}
+<h1>
+Preferenecs
+</h1>
+
+<h2>Set Your Preferences</h2>
+
+<form action="{{ url_for('preferences') }}" method="post">
+    <p>Dietary Restrictions:</p>
+    <p><input type="text" name="dietary_restrictions" value="{{ user_preferences.get('dietary_restrictions', '') }}"></p>
+
+    <p>Favorite Cuisine:</p>
+    <p><input type="text" name="favorite_cuisine" value="{{ user_preferences.get('favorite_cuisine', '') }}"></p>
+
+    <p>Number of Meals per Day:</p>
+    <p><input type="number" name="meals_per_week" value="{{ user_preferences.get('meals_per_week', '') }}"></p>
+
+    <p><input type="submit" value="Save Preferences"></p>
+</form>
+{% endblock %}
+

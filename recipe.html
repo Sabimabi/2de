@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Enter Recipe{% endblock %}
+
+{% block content %}
+<h1>Enter Your Recipe</h1>
+
+<form action="{{ url_for('recipe') }}" method="POST">
+    <p>Recipe Name:</p>
+    <p><input type="text" id="recipe_name" name="recipe_name" required></p>
+
+    <p>Ingredients:</p>
+    <p><textarea id="ingredients" name="ingredients" required></textarea></p>
+
+    <p><input type="submit" value="Save Recipe"></p>
+</form>
+
+<br>
+<a href="{{ url_for('preferences') }}"><button>Back to Preferences</button></a>
+
+{% endblock %}
+

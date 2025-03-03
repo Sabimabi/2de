@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Recipe Plan{% endblock %}
+
+{% block content %}
+    <h1>Your Personalized Recipe Plan</h1>
+
+    {% if recipes %}
+        <h2>Based on Your Preferences</h2>
+        <p><strong>Dietary Restrictions:</strong> {{ user_preferences.get("dietary_restrictions", "None") }}</p>
+        <p><strong>Favorite Cuisine:</strong> {{ user_preferences.get("favorite_cuisine", "Not specified") }}</p>
+        <p><strong>Meals Per Week:</strong> {{ user_preferences.get("meals_per_week", "Not specified") }}</p>
+
+        <h2>Your Recipes:</h2>
+        <ul>
+            {% for recipe in recipes %}
+                <li>
+                    <h3>{{ recipe.name }}</h3>
+                    <p><strong>Ingredients:</strong> {{ recipe.ingredients }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No recipes have been entered. Please add recipes to see your plan.</p>
+        <a href="{{ url_for('recipe') }}"><button>Add Recipes</button></a>
+    {% endif %}
+
+{% endblock %}
